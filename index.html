@@ -103,6 +103,17 @@
     margin:18px auto 8px;text-decoration:none;border:2px solid var(--red);
     border-radius:999px;transition:background .2s ease,transform .2s ease;
   }
+  .legal-footer{
+    width:100%;max-width:420px;margin:34px auto 0;padding:18px 0 40px;text-align:center;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .legal-footer .legal-brand{
+    font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;letter-spacing:1px;
+    text-transform:uppercase;color:#fff;margin:0 0 6px;
+  }
+  .legal-footer p.legal-line{
+    font-family:'Barlow',sans-serif;font-size:0.68rem;line-height:1.5;color:rgba(255,255,255,0.45);margin:0;
+  }
   .site-btn:hover{background:rgba(255,58,58,.12);transform:translateY(-1px);}
   .section-title{
     font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.45rem;
@@ -170,7 +181,7 @@
   <span class="rule top"></span>
   <p class="hero-title">Ta transformation commence ici</p>
   <span class="rule bottom"></span>
-  <p class="hero-sub">Bilan offert &amp; sans engagement — satisfait ou remboursé</p>
+  <p class="hero-sub">Bilan offert<br>Résultats garantis ou remboursé*</p>
 
   <div class="modal-box">
     <div id="cbFormView">
@@ -275,18 +286,20 @@
 
   <a class="site-btn" href="https://mbimbeau.fr" target="_blank" rel="noopener">Visiter notre site internet</a>
 
+  <footer class="legal-footer">
+    <p class="legal-brand">MB Coaching</p>
+    <p class="legal-line">© 2024 MB Coaching, société — Tous droits réservés</p>
+  </footer>
+
 <script>
   (function(){
     var select = document.getElementById('cbSlot');
     for (var h = 9; h <= 17; h++){
-      [0,30].forEach(function(m){
-        var hh = h.toString().padStart(2,'0');
-        var mm = m.toString().padStart(2,'0');
-        var opt = document.createElement('option');
-        opt.value = hh+':'+mm;
-        opt.textContent = hh+':'+mm;
-        select.appendChild(opt);
-      });
+      var hh = h.toString().padStart(2,'0');
+      var opt = document.createElement('option');
+      opt.value = hh+':00';
+      opt.textContent = hh+':00';
+      select.appendChild(opt);
     }
   })();
 
