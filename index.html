@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-<title>MB Coaching — Réserver un bilan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Coach sportif à domicile et en salle à Saint-Maur-des-Fossés, Nogent-sur-Marne, Le Perreux, Bry et Villiers-sur-Marne (94). Bilan offert, résultats garantis ou remboursés." />
+<title>Coach sportif à domicile Saint-Maur, Nogent, Villiers (94) — Bilan offert | MB Coaching</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -169,6 +170,28 @@
   .avis-source{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:2px;}
   .swipe-hint{text-align:center;font-size:.72rem;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.3px;}
 
+  .hero-loc{
+    font-family:'Barlow',sans-serif;font-weight:600;font-size:0.92rem;color:rgba(255,255,255,0.85);
+    text-align:center;margin-top:10px;max-width:340px;
+  }
+  .hero-loc strong{color:#fff;}
+  .modal-field input:focus, .modal-field select:focus{outline:none;border-color:var(--red);}
+  .modal-submit:disabled{opacity:.6;cursor:wait;}
+  .modal-submit:focus-visible,.wa-btn:focus-visible,.site-btn:focus-visible{outline:3px solid #fff;outline-offset:3px;}
+  .form-error{display:none;margin-top:10px;font-size:.85rem;color:#ff8a8a;text-align:center;}
+  .or-sep{text-align:center;font-size:.78rem;color:rgba(255,255,255,.45);margin:14px 0 10px;}
+  .wa-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+    background:#25D366;color:#06210f;text-decoration:none;border-radius:100px;padding:12px;
+    font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.05rem;letter-spacing:.5px;text-transform:uppercase;
+  }
+  .wa-btn svg{width:20px;height:20px;flex:none;}
+  .legal-footer p.legal-cond{margin-top:10px;}
+  @media (prefers-reduced-motion: reduce){
+    .modal-box{animation:none;}
+    .site-btn{transition:none;}
+  }
+
   .success-view{display:none;text-align:center;padding:10px 0;}
   .success-view p.modal-title{margin-bottom:8px;}
   .success-view .desc{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:10px 0 20px;}
@@ -182,20 +205,21 @@
   <p class="hero-title">Ta transformation commence ici</p>
   <span class="rule bottom"></span>
   <p class="hero-sub">Bilan offert<br>Résultats garantis ou 100% remboursé*</p>
+  <p class="hero-loc">Coach sportif <strong>à domicile ou en salle</strong><br>Saint-Maur, Nogent, Le Perreux, Bry et Villiers-sur-Marne</p>
 
   <div class="modal-box">
     <div id="cbFormView">
       <p class="modal-title">Réserver un bilan</p>
       <div class="modal-field">
-        <label>Nom et prénom</label>
-        <input type="text" id="cbName" placeholder="Ton nom et prénom">
+        <label for="cbName">Nom et prénom</label>
+        <input type="text" id="cbName" placeholder="Ton nom et prénom" autocomplete="name">
       </div>
       <div class="modal-field">
-        <label>Numéro de téléphone</label>
-        <input type="tel" id="cbPhone" placeholder="06 12 34 56 78">
+        <label for="cbPhone">Numéro de téléphone</label>
+        <input type="tel" id="cbPhone" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel">
       </div>
       <div class="modal-field">
-        <label>Jour souhaité</label>
+        <label for="cbDay">Jour souhaité</label>
         <select id="cbDay">
           <option value="Lundi">Lundi</option>
           <option value="Mardi">Mardi</option>
@@ -206,10 +230,18 @@
         </select>
       </div>
       <div class="modal-field">
-        <label>Créneau souhaité</label>
+        <label for="cbSlot">Créneau souhaité</label>
         <select id="cbSlot"></select>
       </div>
-      <button class="modal-submit" onclick="submitCallback()">Envoyer ma demande</button>
+      <button class="modal-submit" id="cbSubmit" type="button" onclick="submitCallback()">Envoyer ma demande</button>
+      <p class="form-error" id="cbError" role="alert"></p>
+      <div id="waBlock" hidden>
+        <p class="or-sep">ou</p>
+        <a class="wa-btn" id="waBtn" href="#" target="_blank" rel="noopener" onclick="trackConversion('whatsapp')">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+          Écrire sur WhatsApp
+        </a>
+      </div>
     </div>
     <div id="cbSuccessView" class="success-view">
       <p style="font-size:2.2rem;margin:0 0 12px;">✅</p>
@@ -284,14 +316,32 @@
     </div>
   </section>
 
-  <a class="site-btn" href="https://mbimbeau.fr" target="_blank" rel="noopener">Visiter notre site internet</a>
+  <a class="site-btn" href="https://mbimbeau.fr/#offres" target="_blank" rel="noopener">Voir nos offres et tarifs</a>
 
   <footer class="legal-footer">
     <p class="legal-brand">MB Coaching</p>
-    <p class="legal-line">© 2024 MB Coaching, société — Tous droits réservés</p>
+    <p class="legal-line">© 2026 MB Coaching — Tous droits réservés</p>
+    <p class="legal-line legal-cond">*Garantie soumise à conditions : suivi complet du programme (séances, alimentation et bilans hebdomadaires) pendant toute la durée de l'accompagnement. Conditions détaillées remises lors du bilan.</p>
   </footer>
 
 <script>
+  /* ===== À RÉGLER ===== */
+  // Ton numéro WhatsApp au format international sans + ni espaces (ex : 33612345678). Vide = bouton masqué.
+  var WHATSAPP_NUMBER = '33743798622';
+  // Conversion Google Ads (ex : 'AW-123456789/AbCdEfGh'). Vide = aucun suivi.
+  var ADS_CONVERSION_FORM = '';
+  var ADS_CONVERSION_WHATSAPP = '';
+  /* ===================== */
+
+  // Provenance : ?src=flyer, ?src=google… (flyer par défaut)
+  var SOURCE = (function(){
+    try{
+      var p = new URLSearchParams(location.search);
+      var src = p.get('src') || p.get('utm_source') || (p.get('gclid') ? 'google' : 'flyer');
+      return src.replace(/[^\w-]/g,'').slice(0,30) || 'flyer';
+    }catch(e){ return 'flyer'; }
+  })();
+
   (function(){
     var select = document.getElementById('cbSlot');
     for (var h = 9; h <= 17; h++){
@@ -301,33 +351,75 @@
       opt.textContent = hh+':00';
       select.appendChild(opt);
     }
+    if (WHATSAPP_NUMBER){
+      var msg = encodeURIComponent('Bonjour Max, je souhaite réserver mon bilan offert.');
+      document.getElementById('waBtn').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
+      document.getElementById('waBlock').hidden = false;
+    }
   })();
 
+  function trackConversion(kind){
+    var id = kind === 'whatsapp' ? ADS_CONVERSION_WHATSAPP : ADS_CONVERSION_FORM;
+    if (id && typeof window.gtag === 'function'){
+      window.gtag('event', 'conversion', { send_to: id });
+    }
+  }
+
+  function showError(text){
+    var el = document.getElementById('cbError');
+    el.textContent = text;
+    el.style.display = 'block';
+  }
+
   function submitCallback(){
+    var btn = document.getElementById('cbSubmit');
     var name = document.getElementById('cbName').value.trim();
     var phone = document.getElementById('cbPhone').value.trim();
     var day = document.getElementById('cbDay').value;
     var slot = document.getElementById('cbSlot').value;
-    if(!name || !phone){
-      alert('Merci de renseigner ton nom et ton numéro de téléphone.');
+    document.getElementById('cbError').style.display = 'none';
+
+    if(!name){ showError('Indique ton nom et prénom.'); document.getElementById('cbName').focus(); return; }
+    var digits = phone.replace(/[^\d+]/g,'');
+    if(!/^(\+33|0033|0)[1-9]\d{8}$/.test(digits)){
+      showError('Numéro invalide : indique un numéro français à 10 chiffres (ex : 06 12 34 56 78).');
+      document.getElementById('cbPhone').focus();
       return;
     }
+
     var payload = {
       access_key: 'c2703742-10ba-457e-a153-719c6eb18375',
-      subject: 'Nouvelle demande de bilan - Flyer MB Coaching',
-      from_name: 'Flyer MB Coaching',
-      message: 'Nouvelle demande de bilan (depuis le flyer).' +
+      subject: 'Nouvelle demande de bilan - ' + SOURCE + ' - MB Coaching',
+      from_name: 'Page bilan MB Coaching',
+      message: 'Nouvelle demande de bilan.' +
+               '\nProvenance : ' + SOURCE +
                '\nNom : ' + name +
                '\nTéléphone : ' + phone +
                '\nCréneau souhaité : ' + day + ' à ' + slot
     };
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type':'application/json', 'Accept':'application/json'},
       body: JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return { ok: r.ok && d.success !== false }; }); })
+    .then(function(res){
+      if(!res.ok) throw new Error('send');
+      trackConversion('form');
+      document.getElementById('cbFormView').style.display = 'none';
+      document.getElementById('cbSuccessView').style.display = 'block';
+    })
+    .catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Envoyer ma demande';
+      showError(WHATSAPP_NUMBER
+        ? "L'envoi n'a pas abouti. Réessaie, ou écris-moi directement sur WhatsApp."
+        : "L'envoi n'a pas abouti. Vérifie ta connexion et réessaie.");
     });
-    document.getElementById('cbFormView').style.display = 'none';
-    document.getElementById('cbSuccessView').style.display = 'block';
   }
 </script>
 
